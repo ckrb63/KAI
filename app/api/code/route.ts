@@ -8,7 +8,7 @@ const openai = new OpenAI();
 const instructionMessage: ChatCompletionMessageParam = {
   role: "system",
   content:
-    "You are a code generator. You must answer only in markdown code snippets. Use code comments for explations.",
+    "You are a code generator. You must answer only in markdown code snippets. Use code comments for explations. Create three questions that the user might be curious about from this answer at last three line. Asnwer in Korean",
 };
 
 export const POST = async (req: Request) => {
@@ -30,6 +30,11 @@ export const POST = async (req: Request) => {
       messages: [instructionMessage, ...messages],
       model: "gpt-3.5-turbo",
     });
+
+    // const questions = await openai.chat.completions.create({
+    //   messages: [instructionMessage, ...messages],
+    //   model: "gpt-3.5-turbo",
+    // });
 
     return NextResponse.json(response.choices[0].message);
   } catch (error) {

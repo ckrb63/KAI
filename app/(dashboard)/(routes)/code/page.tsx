@@ -10,7 +10,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import Empty from "@/components/custom/Empty";
-import { Skeleton } from "@/components/ui/skeleton";
 import Loading from "@/components/custom/Loading";
 import { cn } from "@/lib/utils";
 import Avatar from "@/components/custom/Avatar";
@@ -19,25 +18,26 @@ import ReactMarkdown, { ExtraProps } from "react-markdown";
 // Markdown code hightlighter
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import remarkGfm from "remark-gfm";
 
 // TODO: hitory DB
 const CodePage = () => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [questions, setQuestions] = useState<string[]>([]);
   const onChangeTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCurrentMessage(e.target.value);
     console.log(currentMessage);
   };
 
-  const submit = async () => {
+  const submit = async (prompt: string) => {
     try {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setQuestions([]);
       setIsLoading(true);
       const userMessage: ChatCompletionMessageParam = {
         role: "user",
-        content: currentMessage,
+        content: `${prompt}`,
       };
       const newMessages = [...messages, userMessage];
       setMessages((current) => [...current, userMessage]);
@@ -50,8 +50,20 @@ const CodePage = () => {
         },
       });
       const responseJSON = await response.json();
-      console.log(responseJSON);
-      setMessages((current) => [...current, responseJSON]);
+      const lines = responseJSON.content.split("\n") as string[];
+      const questionLines = lines.filter(
+        (line) => line[line.length - 1] === "?"
+      );
+      const answer = lines
+        .filter((line) => line[line.length - 1] !== "?")
+        .join("\n");
+      console.log(answer);
+      setQuestions(questionLines);
+
+      setMessages((current) => [
+        ...current,
+        { role: "assistant", content: answer },
+      ]);
     } catch (error) {
       console.log(error);
     } finally {
@@ -78,7 +90,11 @@ const CodePage = () => {
           className="resize-none flex-wrap w-full border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
         />
         <div className="flex justify-end">
-          <Button disabled={isLoading} size="icon" onClick={submit}>
+          <Button
+            disabled={isLoading}
+            size="icon"
+            onClick={() => submit(currentMessage)}
+          >
             <ArrowDown />
           </Button>
         </div>
@@ -86,51 +102,64 @@ const CodePage = () => {
       <div className="px-4 lg:px-8 flex flex-col flex-1">
         <div className="space-y-4 mt-4">
           {isLoading && <Loading />}
+
           {messages.length === 0 && !isLoading && (
             <Empty color="text-yellow-500" label="no conversation yet!" />
           )}
           <div className="flex flex-col-reverse gap-y-4">
-            {messages.map((message) => (
-              <div
-                key={`${message.content}`}
-                className={cn(
-                  "p-8 w-full flex items-center gap-x-8 rounded-lg",
-                  message.role === "user"
-                    ? "bg-white border border-black/10 flex-row-reverse"
-                    : "bg-muted"
-                )}
-              >
-                <Avatar role={message.role} />
-                <ReactMarkdown
-                  components={{
-                    pre: ({ node, ...props }) => (
-                      <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
-                        <pre {...props} />
-                      </div>
-                    ),
-                    code(props) {
-                      const { children, className, node, ref, ...rest } = props;
-                      const match = /language-(\w+)/.exec(className || "");
-                      return match ? (
-                        <SyntaxHighlighter
-                          {...rest}
-                          PreTag="div"
-                          language={match[1]}
-                          style={materialDark}
-                        >
-                          {String(children).replace(/\n$/, "")}
-                        </SyntaxHighlighter>
-                      ) : (
-                        <code {...rest} className={className}>
-                          {children}
-                        </code>
-                      );
-                    },
-                  }}
-                  className="text-sm overflow-hidden leading-7"
+            {messages.map((message, index) => (
+              <div key={`${message.content}`}>
+                <div
+                  className={cn(
+                    "p-8 w-full flex items-center gap-x-8 rounded-lg",
+                    message.role === "user"
+                      ? "bg-white border border-black/10 flex-row-reverse"
+                      : "bg-muted"
+                  )}
                 >
-                  {`${message.content}` || ""}
-                </ReactMarkdown>
+                  <Avatar role={message.role} />
+                  <ReactMarkdown
+                    components={{
+                      pre: ({ node, ...props }) => (
+                        <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                          <pre {...props} />
+                        </div>
+                      ),
+                      code(props) {
+                        const { children, className, node, ref, ...rest } =
+                          props;
+                        const match = /language-(\w+)/.exec(className || "");
+                        return match ? (
+                          <SyntaxHighlighter
+                            {...rest}
+                            PreTag="div"
+                            language={match[1]}
+                            style={materialDark}
+                          >
+                            {String(children).replace(/\n$/, "")}
+                          </SyntaxHighlighter>
+                        ) : (
+                          <code {...rest} className={className}>
+                            {children}
+                          </code>
+                        );
+                      },
+                    }}
+                    className="text-sm overflow-hidden leading-7"
+                  >
+                    {`${message.content}` || ""}
+                  </ReactMarkdown>
+                </div>
+                {index === messages.length - 1 &&
+                  questions.map((question) => (
+                    <p
+                      onClick={() => submit(question)}
+                      key={question}
+                      className="my-3 border p-2 rounded-md text-sm hover:underline cursor-pointer"
+                    >
+                      {question}
+                    </p>
+                  ))}
               </div>
             ))}
           </div>
