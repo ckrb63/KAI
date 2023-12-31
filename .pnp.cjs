@@ -62,6 +62,7 @@ const RAW_RUNTIME_STATE =
           ["tailwindcss", "npm:3.4.0"],\
           ["tailwindcss-animate", "virtual:be72c0cce44fed69ad39198bea3ca46dea0d41555b0a8cd58b0e578846cd0291bb6c160e19be839e8317e5f7d757a91adfe0ac745a7d9a222b41fc45440f76ee#npm:1.0.7"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
+          ["typewriter-effect", "virtual:be72c0cce44fed69ad39198bea3ca46dea0d41555b0a8cd58b0e578846cd0291bb6c160e19be839e8317e5f7d757a91adfe0ac745a7d9a222b41fc45440f76ee#npm:2.21.0"],\
           ["zod", "npm:3.22.4"]\
         ],\
         "linkType": "SOFT"\
@@ -4363,6 +4364,7 @@ const RAW_RUNTIME_STATE =
           ["tailwindcss", "npm:3.4.0"],\
           ["tailwindcss-animate", "virtual:be72c0cce44fed69ad39198bea3ca46dea0d41555b0a8cd58b0e578846cd0291bb6c160e19be839e8317e5f7d757a91adfe0ac745a7d9a222b41fc45440f76ee#npm:1.0.7"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
+          ["typewriter-effect", "virtual:be72c0cce44fed69ad39198bea3ca46dea0d41555b0a8cd58b0e578846cd0291bb6c160e19be839e8317e5f7d757a91adfe0ac745a7d9a222b41fc45440f76ee#npm:2.21.0"],\
           ["zod", "npm:3.22.4"]\
         ],\
         "linkType": "SOFT"\
@@ -7068,6 +7070,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["performance-now", [\
+      ["npm:2.1.0", {\
+        "packageLocation": "../../.yarn/berry/cache/performance-now-npm-2.1.0-45e3ce7e49-10c0.zip/node_modules/performance-now/",\
+        "packageDependencies": [\
+          ["performance-now", "npm:2.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["picocolors", [\
       ["npm:1.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/picocolors-npm-1.0.0-d81e0b1927-10c0.zip/node_modules/picocolors/",\
@@ -7398,6 +7409,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/quick-lru-npm-5.1.1-e38e0edce3-10c0.zip/node_modules/quick-lru/",\
         "packageDependencies": [\
           ["quick-lru", "npm:5.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["raf", [\
+      ["npm:3.4.1", {\
+        "packageLocation": "../../.yarn/berry/cache/raf-npm-3.4.1-c25d48d76e-10c0.zip/node_modules/raf/",\
+        "packageDependencies": [\
+          ["raf", "npm:3.4.1"],\
+          ["performance-now", "npm:2.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8699,6 +8720,34 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/typescript-patch-4778c7998b-10c0.zip/node_modules/typescript/",\
         "packageDependencies": [\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["typewriter-effect", [\
+      ["npm:2.21.0", {\
+        "packageLocation": "../../.yarn/berry/cache/typewriter-effect-npm-2.21.0-7c3a601393-10c0.zip/node_modules/typewriter-effect/",\
+        "packageDependencies": [\
+          ["typewriter-effect", "npm:2.21.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:be72c0cce44fed69ad39198bea3ca46dea0d41555b0a8cd58b0e578846cd0291bb6c160e19be839e8317e5f7d757a91adfe0ac745a7d9a222b41fc45440f76ee#npm:2.21.0", {\
+        "packageLocation": "./.yarn/__virtual__/typewriter-effect-virtual-4eb5f158bb/3/.yarn/berry/cache/typewriter-effect-npm-2.21.0-7c3a601393-10c0.zip/node_modules/typewriter-effect/",\
+        "packageDependencies": [\
+          ["typewriter-effect", "virtual:be72c0cce44fed69ad39198bea3ca46dea0d41555b0a8cd58b0e578846cd0291bb6c160e19be839e8317e5f7d757a91adfe0ac745a7d9a222b41fc45440f76ee#npm:2.21.0"],\
+          ["@types/react", "npm:18.2.45"],\
+          ["@types/react-dom", "npm:18.2.18"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["raf", "npm:3.4.1"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:be72c0cce44fed69ad39198bea3ca46dea0d41555b0a8cd58b0e578846cd0291bb6c160e19be839e8317e5f7d757a91adfe0ac745a7d9a222b41fc45440f76ee#npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\

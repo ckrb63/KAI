@@ -28,20 +28,6 @@ const tools = [
     href: "/image",
   },
   {
-    label: "동영상 생성하기",
-    icon: Video,
-    color: "text-orange-500",
-    bgColor: "bg-orange-500/10",
-    href: "/video",
-  },
-  {
-    label: "음악 생성하기",
-    icon: Music4,
-    color: "text-green-500",
-    bgColor: "bg-green-500/10",
-    href: "/sound",
-  },
-  {
     label: "코드 생성하기",
     icon: Code2Icon,
     color: "text-gray-500",
@@ -52,11 +38,12 @@ const tools = [
 
 const DashboardPage = () => {
   const router = useRouter();
+  
   return (
     <div>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center">
-          카이(KAI)로 문제를 해결하세요
+          AI로 문제를 해결하세요
         </h2>
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
           Explore the power of AI

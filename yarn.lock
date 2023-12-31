@@ -466,7 +466,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^5.7.1":
+"@prisma/client@npm:5.7.1":
   version: 5.7.1
   resolution: "@prisma/client@npm:5.7.1"
   peerDependencies:
@@ -3339,7 +3339,7 @@ __metadata:
   dependencies:
     "@clerk/nextjs": "npm:^4.29.1"
     "@hookform/resolvers": "npm:^3.3.2"
-    "@prisma/client": "npm:^5.7.1"
+    "@prisma/client": "npm:5.7.1"
     "@radix-ui/react-avatar": "npm:^1.0.4"
     "@radix-ui/react-dialog": "npm:^1.0.5"
     "@radix-ui/react-label": "npm:^2.0.2"
@@ -3362,7 +3362,7 @@ __metadata:
     next: "npm:14.0.4"
     openai: "npm:^4.24.1"
     postcss: "npm:^8"
-    prisma: "npm:^5.7.1"
+    prisma: "npm:5.7.1"
     react: "npm:^18"
     react-dom: "npm:^18"
     react-hook-form: "npm:^7.49.2"
@@ -3373,6 +3373,7 @@ __metadata:
     tailwindcss: "npm:^3.3.0"
     tailwindcss-animate: "npm:^1.0.7"
     typescript: "npm:^5"
+    typewriter-effect: "npm:^2.21.0"
     zod: "npm:^3.22.4"
   languageName: unknown
   linkType: soft
@@ -5797,6 +5798,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"performance-now@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "performance-now@npm:2.1.0"
+  checksum: 22c54de06f269e29f640e0e075207af57de5052a3d15e360c09b9a8663f393f6f45902006c1e71aa8a5a1cdfb1a47fe268826f8496d6425c362f00f5bc3e85d9
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -5924,7 +5932,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prisma@npm:^5.7.1":
+"prisma@npm:5.7.1":
   version: 5.7.1
   resolution: "prisma@npm:5.7.1"
   dependencies:
@@ -6051,6 +6059,15 @@ __metadata:
   version: 5.1.1
   resolution: "quick-lru@npm:5.1.1"
   checksum: a24cba5da8cec30d70d2484be37622580f64765fb6390a928b17f60cd69e8dbd32a954b3ff9176fa1b86d86ff2ba05252fae55dc4d40d0291c60412b0ad096da
+  languageName: node
+  linkType: hard
+
+"raf@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "raf@npm:3.4.1"
+  dependencies:
+    performance-now: "npm:^2.1.0"
+  checksum: 337f0853c9e6a77647b0f499beedafea5d6facfb9f2d488a624f88b03df2be72b8a0e7f9118a3ff811377d534912039a3311815700d2b6d2313f82f736f9eb6e
   languageName: node
   linkType: hard
 
@@ -7143,6 +7160,19 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 1d0a5f4ce496c42caa9a30e659c467c5686eae15d54b027ee7866744952547f1be1262f2d40de911618c242b510029d51d43ff605dba8fb740ec85ca2d3f9500
+  languageName: node
+  linkType: hard
+
+"typewriter-effect@npm:^2.21.0":
+  version: 2.21.0
+  resolution: "typewriter-effect@npm:2.21.0"
+  dependencies:
+    prop-types: "npm:^15.8.1"
+    raf: "npm:^3.4.1"
+  peerDependencies:
+    react: ^17.x || ^18.x
+    react-dom: ^17.x || ^18.x
+  checksum: e3200599f1de2b06933960ab291f4949194a629b44b73e5d88b591119f90cb32a74f2edc9ebaea823c418babc2b62c41e223ac600a29ceaee223d1fe4cfe4342
   languageName: node
   linkType: hard
 

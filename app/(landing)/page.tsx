@@ -1,15 +1,13 @@
+import { LandingHero } from "@/components/custom/Hero/landing";
+import LandingNavigationbar from "@/components/custom/Navigationbar/landing";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const LandingPage = () => {
   return (
-    <div>
-      LandingPage
-      <div>
-        <Link href="/sign-in">
-          <Button>Login</Button>
-        </Link>
-      </div>
+    <div className="h-full">
+      <LandingNavigationbar />
+      <LandingHero />
     </div>
   );
 };

@@ -37,18 +37,6 @@ const routes = [
     color: "text-pink-500",
   },
   {
-    label: "동영상",
-    icon: VideoIcon,
-    href: "/video",
-    color: "text-orange-500",
-  },
-  {
-    label: "사운드",
-    icon: Music4Icon,
-    href: "/sound",
-    color: "text-green-500",
-  },
-  {
     label: "코드",
     icon: Code2Icon,
     href: "/code",

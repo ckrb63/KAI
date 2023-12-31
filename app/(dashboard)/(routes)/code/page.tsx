@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import { ArrowDown, Code2, MessagesSquare, Send } from "lucide-react";
 
@@ -18,13 +18,18 @@ import ReactMarkdown, { ExtraProps } from "react-markdown";
 // Markdown code hightlighter
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { createChat, createHistory } from "@/lib/api/history";
 
 // TODO: hitory DB
 const CodePage = () => {
+  const [historyId, setHistoryId] = useState("");
   const [currentMessage, setCurrentMessage] = useState("");
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState<string[]>([]);
+
+  useEffect(() => {}, [historyId]);
+
   const onChangeTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCurrentMessage(e.target.value);
     console.log(currentMessage);
@@ -59,11 +64,37 @@ const CodePage = () => {
         .join("\n");
       console.log(answer);
       setQuestions(questionLines);
-
       setMessages((current) => [
         ...current,
         { role: "assistant", content: answer },
       ]);
+      let id = historyId;
+      console.log(id);
+      if (id === "") {
+        const historyResponse = await fetch("/api/code/history", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        id = await historyResponse.json();
+        console.log(id);
+        setHistoryId(id);
+      }
+      if (id && id.length > 0) {
+        console.log(id, userMessage.role, prompt);
+        await fetch("/api/code/history/chat", {
+          method: "POST",
+          body: JSON.stringify({
+            historyId: id,
+            role: userMessage.role,
+            content: prompt,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
     } catch (error) {
       console.log(error);
     } finally {

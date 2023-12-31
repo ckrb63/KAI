@@ -16,3 +16,19 @@ model UserApiLimit {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Chat {
+  id        String       @id @default(cuid())
+  content   String
+  role      String
+  history   ChatHistory  @relation(fields: [historyId], references: [id])
+  historyId String
+
+  @@index([historyId])
+}
+
+model ChatHistory {
+  id      String   @id @default(cuid())
+  userId  String
+  chats   Chat[]
+}
