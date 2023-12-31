@@ -18,7 +18,6 @@ import ReactMarkdown, { ExtraProps } from "react-markdown";
 // Markdown code hightlighter
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { createChat, createHistory } from "@/lib/api/history";
 
 // TODO: hitory DB
 const CodePage = () => {
