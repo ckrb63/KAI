@@ -233,7 +233,7 @@ const CodePage = () => {
               </SheetHeader>
               <div className="mt-5 space-y-3">
                 {historyList.map((history) => (
-                  <SheetClose asChild>
+                  <SheetClose asChild key={history.userId}>
                     <Card
                       className="hover:shadow transition cursor-pointer"
                       onClick={() => onClickHistoryCard(history)}
