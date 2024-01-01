@@ -8,7 +8,7 @@ const openai = new OpenAI();
 const instructionMessage: ChatCompletionMessageParam = {
   role: "system",
   content:
-    "You are a code generator. You must answer only in markdown code snippets. Use code comments for explations. Create three questions that the user might be curious about from this answer at last three line. Asnwer in Korean",
+    "You are a code generator. You must answer only in markdown code snippets. Use code comments for explations. You must create three questions that the user might be curious about from this answer at last three line. Asnwer in Korean",
 };
 
 export const POST = async (req: Request) => {

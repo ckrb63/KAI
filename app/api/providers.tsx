@@ -20,7 +20,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    // checkingUser();
+    checkingUser();
   }, [isSignedIn]);
 
   const [queryClient] = useState(() => new QueryClient());

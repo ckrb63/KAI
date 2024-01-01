@@ -42,3 +42,4 @@ next-env.d.ts
 # prisma build files 
 prisma/*
 !prisma/schema.prisma
+node_modules

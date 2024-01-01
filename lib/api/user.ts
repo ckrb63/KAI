@@ -1,10 +1,9 @@
 import axios from "axios";
+import axiosInstance from "./instance";
 
 export const checkUser = async (userId: string) => {
   try {
-    const response = await axios.get(
-      `https://www.qa.delgo.pet/api/user?userId=${userId}`
-    );
+    const response = await axiosInstance.get(`/user?userId=${userId}`);
     return response.data;
   } catch (error) {
     return false;
@@ -12,8 +11,6 @@ export const checkUser = async (userId: string) => {
 };
 
 export const createUser = async (userId: string) => {
-  const response = await axios.post(
-    `https://www.qa.delgo.pet/api/user/${userId}`
-  );
+  const response = await axios.post(`/user/${userId}`);
   return response.data;
 };

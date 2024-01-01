@@ -80,9 +80,6 @@ const ChatPage = () => {
       <div className="px-4 lg:px-8 flex flex-col flex-1">
         <div className="space-y-4 mt-4">
           {isLoading && <Loading />}
-          {messages.length === 0 && !isLoading && (
-            <Empty color="text-yellow-500" label="no conversation yet!" />
-          )}
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
               <div
