@@ -66,7 +66,6 @@ const CodePage = () => {
     if (userId) {
       const historyListResponse = await getChatHistoryList(userId);
       setHistoryList(historyListResponse);
-      console.log(historyListResponse);
     }
   };
 
@@ -157,14 +156,12 @@ const CodePage = () => {
       const answer = lines
         .filter((line) => line[line.length - 1] !== "?")
         .join("\n");
-      console.log(answer);
       setQuestions(questionLines);
       setMessages((current) => [
         ...current,
         { role: "assistant", content: answer },
       ]);
       let id = historyId;
-      console.log(id);
 
       const chatResponse = await createChatAndHistory({
         userId,
@@ -172,7 +169,6 @@ const CodePage = () => {
         role: "user",
         historyId: id,
       });
-      console.log(chatResponse.historyId);
       id = chatResponse.historyId;
       setHistoryId(id);
       createChatAndHistory({
