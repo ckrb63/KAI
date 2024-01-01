@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = process.env.NEXT_PUBLIC_API_URL;
+const baseURL = "https://www.qa.delgo.pet/api";
 
 const axiosInstance = axios.create({
     baseURL,
