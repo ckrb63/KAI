@@ -42,12 +42,12 @@ const routes = [
     href: "/code",
     color: "text-gray-500",
   },
-  {
-    label: "설정",
-    icon: Settings2,
-    href: "/settings",
-    // color: "text-gray-500",
-  },
+  // {
+  //   label: "설정",
+  //   icon: Settings2,
+  //   href: "/settings",
+  //   // color: "text-gray-500",
+  // },
 ];
 
 const Sidebar = () => {
